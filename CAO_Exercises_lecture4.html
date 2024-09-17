@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Laurits Ivar" />
+    <meta name="description" content="This page contains CAO exercises to lecture 4" />
+    <title>CAO exercises</title>
+    <link
+      rel="icon"
+      href="microchip-clipart-pgb-chip-generic_Vector_Clipart-2655172564.png"
+    />
+    <link rel="stylesheet" href="style.css"> 
+
+  </head>
+  <body>
+    <a href="..">go back</a>
+    <h2>1. CPU</h2>
+    <p>
+      The 8-bit AVR CPU is running a program stored in the RAM. The first 3
+      instructions can be seen on the figure below
+    </p>
+    <table>
+      <tr>
+        <th>Address</th>
+        <th>Opcode</th>
+        <th>Hint</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1110 0000 0001 0011</td>
+        <td>
+          Look at page 115 in the
+          <a
+            href="atmel-0856-avr-instruction-set-manual.pdf"
+            target="_blank"
+            >instruction-set-manual</a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0110 1000 0001 0110</td>
+        <td>
+          Look at page 133 in the
+          <a
+            href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf"
+            target="_blank"
+            >instruction-set-manual</a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0111 1010 0001 0100</td>
+        <td>
+          Look at page 36 in the
+          <a
+            href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf" target="_blank"
+            >instruction-set-manual</a
+          >
+        </td>
+      </tr>
+    </table>
+    <a
+      href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf"
+      target="_blank"
+      >The instruction manual can be found here</a
+    >
+
+    <p>
+      TASK: Explain what happens in each of the instructions, and write down the
+      value of R17 after each of the instructions. (HINT if done correctly
+      register17 should contain the value 132 in the end)
+    </p>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+
+      <table>
+        <tr>
+          <th>Address</th>
+          <th>Opcode</th>
+          <th>Solution</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1110 0000 0001 0011</td>
+          <td>
+            K = 0b0000 0011 = 3<br />
+            d = 0b0001 = 1 = R17<br />
+            LDI R17, 3 // Register 17 = 3
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0110 1000 0001 0110</td>
+          <td>
+            K = 0b1000 0110 <br />
+            d = 0b001 = 1 =R17<br />
+            ORI R17, 0b1000 0110<br />
+            R17 is OR’ed with the value above. Then R17 becomes:<br />
+            R17 = 0b1000 0111 = 135
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>0111 1010 0001 0100</td>
+          <td>
+            K = 0b 1010 0100<br />
+            d = 0b 0001 = 1 = R17<br />
+            ANDI R17, 0b 1010 0100<br />
+            R17 is AND’ed with the value above. <br />
+            R17 = 0b 1000 0100 = 132
+          </td>
+        </tr>
+      </table>
+    </details>
+    <p><br /><br /><br /></p>
+    <hr />
+    <h2>2. CPU</h2>
+
+    <p>
+      The 8-bit AVR CPU is running a program stored in the RAM. The first 3
+      instructions can be seen on the figure below
+    </p>
+    <table>
+      <tr>
+        <th>Address</th>
+        <th>Opcode</th>
+        <th>Hint</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1110 0001 0000 0001</td>
+        <td>
+          Look at page 115 in the
+          <a
+            href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf"
+            target="_blank"
+            >instruction-set-manual</a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0010 1111 0010 0000</td>
+        <td>
+          Look at page 123 in the
+          <a
+            href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf"
+            target="_blank"
+            >instruction-set-manual</a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0000 1111 0000 0010</td>
+        <td>
+          Look at page 32 in the
+          <a
+            href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf"
+            target="_blank"
+            >instruction-set-manual</a
+          >
+        </td>
+      </tr>
+    </table>
+    <a
+      href="http://ww1.microchip.com/downloads/en/devicedoc/atmel-0856-avr-instruction-set-manual.pdf"
+      target="_blank"
+      >The instruction manual can be found here</a
+    >
+
+    <p>
+      TASK: Explain what happens in each of the instructions, and write down the
+      value of R16 after each of the instructions. (HINT if done correctly R16
+      should contain the value 34 in the end)
+    </p>
+    <details>
+      <summary>
+        <mark> Click here to see the solution</mark>
+      </summary>
+      <table>
+        <tr>
+          <th>Address</th>
+          <th>Opcode</th>
+          <th>Solution</th>
+        </tr>
+        <tr>
+          <td>0</td>
+          <td>1110 0001 0000 0001</td>
+          <td>
+            K = 0b0001 0001 = 17<br />
+            d = 0b0000 = 0 = R16<br />
+            LDI R16, 17 // Register 16 = 17
+          </td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0010 1111 0010 0000</td>
+          <td>
+            r = 0b10000=0=r16 <br />
+            d = 0b10010 = 2 =R18<br />
+            The value of R16 is copied into R18<br />
+            Therefor both R16 and R18 is:<br />
+            R16=R18 = 0b0001 0001 = 17
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>0000 1111 0000 0010</td>
+          <td>
+            d = 0b10000=0=r16 <br />
+            r = 0b10010 = 2 =R18<br />
+            R16 and R18 is added together. The results is stored in Rd (R16)<br />
+            R16=17+17=34<br />
+            R18 still contains the value 17 afterwards.
+          </td>
+        </tr>
+      </table>
+    </details>
+    <p><br /><br /><br /></p>
+    <h2>3. Boolean Arithmetic</h2>
+    <p>
+      The truth table of some combinational logic can be seen in the table
+      below:
+    </p>
+    <table>
+      <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>Out</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+    </table>
+    <p>
+      TASK 3.1: Write down the boolean function described in the table, and
+      reduce it as much as possible.
+    </p>
+    <details>
+      <summary>
+        <mark> Click here to see the solution</mark>
+      </summary>
+      <p>
+        !a!bc+  <mark class="red"> a!b!c+a!bc </mark> <mark class="blue">+ab!c+abc</mark><br />
+        !a!bc+<mark class="red">a!b(!c+c)</mark>+<mark class="blue">ab(!c+c)</mark><br />
+        !a!bc+<mark class="red">a!b</mark>+<mark class="blue">ab</mark><br />
+        !a!bc+a(<mark class="red">!b</mark>+<mark class="blue">b</mark>)<br />
+        !a!bc+a<br />
+        !bc+a
+      </p>
+    </details>
+
+    <p>
+        TASK 3.2: Implement the circuit in the <a href="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0FwCwCY0HYEA4cEMElURTJyBTAWjDACgwyNsNwA2StMDzyyu0oIGAGXAY8-EHkq9BUEADMAhgBsAzlXJQxEqRiwzBRocvVadkBgFlykkBkhSE2Pk4OOUDAJKPnjkYAzEHuRgIo5ExEjgh8QZBoIDzxiYpmIuJgDpJSso54npSqmtpI1gAe5EEAnODYLtjY4HgQSUYA8gCuAC4MVQhB4GiUHHVgaEPtSQCC-eSC2SAc7szJjkkAQvMIEKx8HAbYddMgAMIMQA" target="_blank">simulator</a> using AND, OR and inverter gates (left click on the gates and select “Edit” if you want more than 2 inputs). 
+      </p>
+      <details>
+        <summary>
+          <mark> Click here to see the solution</mark>
+        </summary>
+        <a href="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0FwCwCY0HYEA4cEMElURTJyBTAWjDACgwyNsMRiA2ENMbrqB0EIGAGXAY84TpTyU+ldpQBmAQwA2AZyrkoYiVIxYQcjsaUg1WnUkgMAsiBmHjnBP3McUDAJIGzaBzuAYIwpExEPGgugc4hisL6YJIceFKmkoaCVtq6dgAeTmAAnODFsQjYZVWBxgDyAK4ALgyFCADM4GiUnKVgaJ21gQCCreSKyU78zDwcgQBCYwgQrNychtilQyAAwgwA7v6ZHGwnSgdBHrWnWJR2h8lSClGGkFL3PHyXL3N3DEA" target="_blank">Link to solution</a>
+      </details>
+
+
+
+      <h2>3. Boolean Arithmetic</h2>
+    <p>
+      The truth table of some combinational logic can be seen in the table
+      below:
+    </p>
+    <table>
+      <tr>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>Out</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+    </table>
+    <p>
+      TASK 3.1: Write down the boolean function described in the table, and
+      reduce it as much as possible.
+    </p>
+    <details>
+      <summary>
+        <mark> Click here to see the solution</mark>
+      </summary>
+      <p>
+        <mark class="red"> !ab!c+!abc </mark>+<mark class="blue">ab!c+abc</mark><br />
+        <mark class="red">!ab(!c+c)</mark>+<mark class="blue">ab(!c+c)</mark><br />
+        <mark class="red">!ab</mark>+<mark class="blue">ab</mark><br />
+        b(<mark class="red">!a</mark>+<mark class="blue">a</mark>)<br />
+        b
+      </p>
+    </details>
+
+    <p>
+        TASK 3.2: Implement the circuit in the <a href="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0FwCwCY0HYEA4cEMElURTJyBTAWjDACgwyNsNwA2StMDzyyu0oIGAGXAY8-EHkq9BUEADMAhgBsAzlXJQxEqRiwzBRocvVadkBgFlykkBkhSE2Pk4OOUDAJKPnjkYAzEHuRgIo5ExEjgh8QZBoIDzxiYpmIuJgDpJSso54npSqmtpI1gAe5EEAnODYLtjY4HgQSUYA8gCuAC4MVQhB4GiUHHVgaEPtSQCC-eSC2SAc7szJjkkAQvMIEKx8HAbYddMgAMIMQA" target="_blank">simulator</a> using AND, OR and inverter gates (left click on the gates and select “Edit” if you want more than 2 inputs). 
+      </p>
+      <details>
+        <summary>
+          <mark> Click here to see the solution</mark>
+        </summary>
+        <a href="http://falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWc0FwCwCY0HYEA4cEMElURTJyBTAWjDACgAZcDPcANkr0rC5AxQQAMwCGAGwDOVclGat2GLCB4DlgiGKkykkBgFkQXRco4IOatAIEp5YNgLztVbRUK3TZegB5GwATnB-KzNsILCrZQB5AFcAFwZfBABmcDRKDkCwNFTIqwBBRPJKDHsjC1KkPJAAISKECAxsCw5FbEDqgGEGAHcFSyNIEys9IA" target="_blank">Link to solution</a>
+      </details>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <img
+      title="random Pic"
+      src="microchip-clipart-pgb-chip-generic_Vector_Clipart-2655172564.png"
+      alt="Missing a random pic"
+      loading="lazy"
+      width="300"
+    />
+  </body>
+</html>

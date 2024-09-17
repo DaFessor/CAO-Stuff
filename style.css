@@ -1,0 +1,72 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+}
+
+html {
+  font-size: 18px;
+}
+body {
+  background-color: #333;
+  color: whitesmoke; 
+}
+a {
+  color: aliceblue;
+}
+a:visited {
+  color: aliceblue;
+}
+a:hover,
+a:active {
+  color: #eee;
+}
+mark.red {
+  color: #ff0000;
+  background: none;
+}
+
+mark.blue {
+  color: #0000ff;
+  background: none;
+}
+
+mark.yellow {
+    color: #e7eb00;
+    background: none;
+  }
+
+
+  mark.green {
+    color: #00eb1f;
+    background: none;
+  }
+
+  body {
+    counter-reset: chapter 0 section 0;
+  }
+  h1{
+      counter-increment: chapter;
+  }
+  h2 {
+    counter-reset: slide 0;
+    counter-increment: section;
+  }
+  h3 {
+    counter-increment: slide;
+  }
+  h1:before {
+    content: counter(chapter)". ";
+  }
+  h2:before {
+    content:  counter(section)"  ";
+  }
+  h3:before {
+    content: counter(section)"." counter(slide)" ";
+  }

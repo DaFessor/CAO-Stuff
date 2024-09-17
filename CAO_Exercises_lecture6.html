@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="author" content="Laurits Ivar" >
+    <meta
+      name="description"
+      content="This page contains CAO exercises to lecture 6">
+    <title>CAO exercises</title>
+    <link
+      rel="icon"
+      href="microchip-clipart-pgb-chip-generic_Vector_Clipart-2655172564.png"
+    >
+    <link rel="stylesheet" href="style.css" >
+  </head>
+  <body>
+    <a href="..">go back</a>
+    <h2>Turn on the test LED</h2>
+
+    <p>
+      The test LED is located on port B bit nr. 7 (PB7) <br />
+      This picture shows where PB7 is placed: <br />
+      <img
+        src="ardunio_mega_pinout.png"
+        alt=""
+        style="width: 400px; height: 300px"
+      >
+      <br >
+      <a href="ardunio_mega_pinout.png" target="_blank"
+        >Click here to open the picture in a new tab:</a>
+      <br >
+      <br >
+    </p>
+
+    <p>
+      Since it is a port the <mark class="blue">OUT</mark>instruction can be
+      used.
+    </p>
+    <br >
+    <h3>
+      TASK: Turn ON the testLED. Start by doing it in the simulator. Afterward
+      do it IRL
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+      <code>
+        <mark class="blue">LDI</mark> r16, 0b10000000 <br />
+        <mark class="blue">out</mark> ddrb, r16
+        <mark class="green">; set bit 7 on PB to be an Output pin.</mark> <br >
+        <mark class="blue">out</mark> portb, r16
+        <mark class="green"
+          >; set bit 7 on portB to be high (to turn on the TEST LED).</mark
+        >
+        <br />
+
+        forever:
+        <mark class="green"
+          >; loop here forever, just to make sure that the CPU aren't doing
+          anything else </mark
+        ><br />
+        <mark class="blue">jmp</mark> forever
+      </code>
+      <hr />
+    </details>
+
+    <br /><br >
+    <h3>
+      TASK: Turn OFF the testLED. Start by doing it in the simulator. Afterward
+      do it IRL
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+      <code>
+        <mark class="blue">LDI</mark> r16, 0b10000000 <br />
+        <mark class="blue">out</mark> ddrb, r16
+        <mark class="green">; set bit 7 on PB to be an Output pin.</mark> <br >
+        <mark class="blue">LDI</mark> r16, 0 <br />
+        <mark class="blue">out</mark> portb, r16
+        <mark class="green"
+          >; set bit 7 on portB to be low (to turn off the TEST LED).</mark
+        >
+        <br />
+
+        forever:
+        <mark class="green"
+          >; loop here forever, just to make sure that the CPU aren't doing
+          anything else </mark
+        ><br />
+        <mark class="blue">jmp</mark> forever
+      </code>
+      <hr />
+    </details>
+    <br >
+    <h2>External LED</h2>
+    <p>
+      Connect a LED in series with a 220ohm resistor to PA0. Look at the picture
+      above to see where PA0 is located.
+    </p>
+    <br >
+    <br > <h3>
+      TASK: Turn ON the testLED. Start by doing it in the simulator. Afterward
+      do it IRL
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <br > <hr />
+      <code>
+        <mark class="blue">LDI</mark> r16, 0b00000001
+        <mark class="green">; or just LDI R16, 1.</mark><br />
+        <mark class="blue">out</mark> ddra, r16
+        <mark class="green">; set bit 0 on PA to be an Output pin.</mark> <br >
+        <mark class="blue">out</mark> porta, r16
+        <mark class="green"
+          >; set bit 0 on porta to be high (to turn on the external LED
+          on).</mark
+        >
+        <br />
+
+        forever:
+        <mark class="green"
+          >; loop here forever, just to make sure that the CPU aren't doing
+          anything else </mark
+        ><br />
+        <mark class="blue">jmp</mark> forever
+      </code>
+      <br />
+      <br />
+      <img src="externalLED.bmp" alt="grag" />
+      <br > <hr />
+    </details>
+
+    <br > <h3>
+      TASK: Turn OFF the testLED. Start by doing it in the simulator. Afterward
+      do it IRL
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <br > <hr />
+      <code>
+        <mark class="blue">LDI</mark> r16, 0b00000001
+        <mark class="green">; or just LDI R16, 1.</mark><br />
+        <mark class="blue">out</mark> ddra, r16
+        <mark class="green">; set bit 0 on PA to be an Output pin.</mark> <br >
+        <mark class="blue">LDI</mark> r16, 0b00000000
+        <mark class="green">; or just LDI R16, 0.</mark><br />
+        <mark class="blue">out</mark> porta, r16
+        <mark class="green"
+          >; clear bit 0 on porta to 0 (to turn on the external LED OFF).</mark
+        >
+        <br >
+
+        forever:
+        <mark class="green"
+          >; loop here forever, just to make sure that the CPU aren't doing
+          anything else </mark
+        ><br >
+        <mark class="blue">jmp</mark> forever
+      </code>
+      <br > <hr />
+    </details>
+
+    <br > <h3>
+      Connect at least 4 LEDs to ports of your own choosing, and turn 2 of them
+      On and 2 of them Off
+    </h3>
+
+    <br > <h2>Simulations</h2>
+     <h3>
+      Write assembly code that add the two values 0x16 and 0xCD. Place the
+      result in R19
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+       <hr />
+      <code>
+        <mark class="blue">LDI</mark> R18, 0x16<br >
+        <mark class="blue">LDI</mark> R19, 0xCD <br >
+        <mark class="blue">ADD</mark> r19, R18
+        <mark class="green">; The result is replacing 0xCD in R19</mark><br >
+      </code>
+      <br > <hr />
+    </details>
+
+    <br > <h3>
+      True or False> No value can be moved directly into the GPR's (Generel
+      purpose registers)
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <br > <hr />
+      <p>false <br /></p>
+      <br > <hr />
+    </details>
+
+    <br > <h3>
+      What is the largest hex value that can be moved to a 8-bit registers? And
+      what is the decimal equivalent of that hex value?
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <br > <hr />
+      <p>0xFF, which is 255 in decimal <br /></p>
+      <br > <hr />
+    </details>
+<br>
+    <br > <h3>
+      True or false: No value can be loaded directly from program memory into
+      internal SRAM
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <br > <hr />
+  
+        <p>
+          True. First it has to be loaded into the GPR. Afterward it can go to
+          the SRAM <br />
+        </p>
+  
+      <hr />
+    </details>
+    <br>
+    <h3>
+      Whats wrong with the following code? <mark class="blue">STS</mark> 0x0200,
+      0xAA
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+
+        <p>
+          Syntax... STS can put the value of a GPR into address 0x0200. It
+          cannot put a value directly <br />
+        </p>
+
+      <hr />
+    </details>
+    <br>
+    <h3>
+      Whats wrong with the following code? <mark class="blue">STS</mark> PORTA,
+      R16
+    </h3>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+
+        <p>
+          The label PORTA belongs to a different memory mapping. So this code
+          will put the value of R16 into SRAM address 2, but this is not the I/O
+          register <br />
+        </p>
+
+      <hr />
+    </details>
+<br>
+    <h3>
+      Whats the C and Z flag after the following code has been executed.
+      Afterward, test it using the simulator.
+    </h3>
+    <code>
+      <mark class="blue">LDI</mark> R20, 0x9F<br />
+      <mark class="blue">LDI</mark> R21, 0x61 <br />
+      <mark class="blue">ADD</mark> R20, R21 <br />
+    </code>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+
+        <p>Z=1, C=1 <br /></p>
+
+      <hr />
+    </details>
+    <br><br>
+
+    <code>
+      <mark class="blue">LDI</mark> R20, 0x82<br />
+      <mark class="blue">LDI</mark> R21, 0x22 <br />
+      <mark class="blue">ADD</mark> R20, R21 <br />
+    </code>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+ 
+        <p>Z=0, C=0 <br /></p>
+ 
+      <hr />
+    </details>
+<br><br>
+    <code>
+      <mark class="blue">LDI</mark> R18, 0x67<br />
+      <mark class="blue">LDI</mark> R21, 157 <br />
+      <mark class="blue">ADD</mark> R18, R21 <br />
+    </code>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+    
+        <p>Z=0, C=1 <br /></p>
+
+      <hr />
+    </details>
+
+    <br > <h3>
+      What will R16 contain after the following code has been executed?
+      Afterward, check it in the simulator:
+    </h3>
+    <code>
+      <mark class="blue">LDI</mark> R16, 0xAA<br />
+      <mark class="blue">LDI</mark> R21, 0x55 <br />
+      <mark class="blue">AND</mark> R16, R21 <br />
+    </code>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+
+        <p>R16=0 <br /></p>
+ 
+      <hr />
+    </details>
+
+    <code>
+      <br />
+      <mark class="blue">LDI</mark> R16, 0xAA<br />
+      <mark class="blue">LDI</mark> R21, 0x55 <br />
+      <mark class="blue">OR</mark> R16, R21 <br />
+    </code>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+    
+        <p>R16=255 <br /></p>
+   
+      <hr />
+    </details>
+
+    <br > <h3>
+      Try out the following instructions in the simulator and see if they do
+      what you expect.
+    </h3>
+    <code>
+      <mark class="blue">EOR</mark> <br />
+      <mark class="blue">INC</mark><br />
+      <mark class="blue">DEC</mark><br />
+      <mark class="blue">NEG</mark><br />
+      <mark class="blue">SUB</mark><br />
+    </code>
+
+    <br > <h3>Create a program that adds two 16 bits numbers</h3>
+    <p>
+      HINT: Hint 1: The keywords HIGH() and LOW() takes the 8 MSBs (Most
+      Significant Bit) and the 8 LSBs (Least Significant Bit) of the 16 bits
+      number. (e.g ldi Rd, HIGH(0xCA9) = ldi Rd, 0x0C and ldi Rd, LOW(0xCA9) =
+      ldi Rd, 0xA9 ) <br />
+      Hint 2: Use ADC (add with carry), when adding the most significant byte.
+    </p>
+    <details>
+      <summary><mark> Click here to see the solution</mark></summary>
+      <hr />
+      <code>
+        <mark class="green">; this program adds 1000 with 2000</mark> <br />
+        <mark class="blue">ldi </mark>r17, HIGH(1000)
+        <mark class="green">; High(1000) = 0b0000 0011</mark> <br />
+        <mark class="brlue">ldi </mark>r16, LOW(1000)
+        <mark class="green">; LOW(1000) = 0b1110 1000</mark><br />
+
+        <mark class="blue">ldi </mark> r21, HIGH(2000)
+        <mark class="green">; High(2000) = 0b0000 0111 </mark> <br />
+        <mark class="blue">ldi </mark> r20, LOW(2000)<mark class="green"
+          >; low(2000) = 0b1101 0000</mark
+        ><br />
+
+        <mark class="blue">ADD </mark> r16,r20<mark class="green">
+          ; R16= 0b1011 1000</mark
+        ><br />
+        <mark class="blue">ADC </mark> r17,r21
+        <mark class="green">; R17 = 0b0000 1011</mark><br />
+      </code>
+      <hr />
+    </details>
+  </body>
+</html>
